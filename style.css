@@ -654,3 +654,58 @@ footer{
     }
 
 }
+@media(max-width:768px){
+
+    .hero{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .hero h2{
+        font-size:1.4rem;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+    }
+
+}   /* <- media query ends here */
+
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+.hidden{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all .8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.active{
+    color:var(--accent) !important;
+}
