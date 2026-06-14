@@ -38,6 +38,157 @@
 // })();
 
 
+// const text = [
+//     "RTL Design",
+//     "FPGA Acceleration",
+//     "Hardware Security",
+//     "VLSI Engineering",
+//     "Digital Systems",
+//     "Hardware Accelerators",
+//     "Verilog Development",
+//     "AI on FPGA"
+// ];
+
+// let count = 0;
+// let index = 0;
+// let currentText = "";
+// let letter = "";
+
+// /* ========================= */
+// /* TYPING EFFECT */
+// /* ========================= */
+
+// (function type(){
+
+//     if(count === text.length){
+//         count = 0;
+//     }
+
+//     currentText = text[count];
+//     letter = currentText.slice(0, ++index);
+
+//     const typingElement = document.getElementById("typing");
+
+//     if(typingElement){
+//         typingElement.textContent = letter;
+//     }
+
+//     if(letter.length === currentText.length){
+
+//         count++;
+//         index = 0;
+
+//         setTimeout(type, 1800);
+
+//     }else{
+
+//         setTimeout(type, 80);
+
+//     }
+
+// })();
+
+// /* ========================= */
+// /* NAVBAR ACTIVE LINK */
+// /* ========================= */
+
+// const sections = document.querySelectorAll("section[id]");
+// const navLinks = document.querySelectorAll(".nav-links a");
+
+// window.addEventListener("scroll", () => {
+
+//     let current = "";
+
+//     sections.forEach(section => {
+
+//         const sectionTop = section.offsetTop - 150;
+//         const sectionHeight = section.clientHeight;
+
+//         if(window.scrollY >= sectionTop){
+//             current = section.getAttribute("id");
+//         }
+
+//     });
+
+//     navLinks.forEach(link => {
+
+//         link.classList.remove("active");
+
+//         if(link.getAttribute("href") === "#" + current){
+//             link.classList.add("active");
+//         }
+
+//     });
+
+// });
+
+// /* ========================= */
+// /* FADE-IN ANIMATION */
+// /* ========================= */
+
+// const observer = new IntersectionObserver(entries => {
+
+//     entries.forEach(entry => {
+
+//         if(entry.isIntersecting){
+//             entry.target.classList.add("show");
+//         }
+
+//     });
+
+// },{
+//     threshold:0.15
+// });
+
+// document.querySelectorAll(
+//     ".section, .card, .project-card, .timeline-item, .edu-card"
+// ).forEach(el => {
+
+//     el.classList.add("hidden");
+//     observer.observe(el);
+
+// });
+
+// /* ========================= */
+// /* SCROLL TO TOP ON LOGO */
+// /* ========================= */
+
+// const logo = document.querySelector(".logo");
+
+// if(logo){
+
+//     logo.addEventListener("click", () => {
+
+//         window.scrollTo({
+//             top:0,
+//             behavior:"smooth"
+//         });
+
+//     });
+
+// }
+
+// /* ========================= */
+// /* CURRENT YEAR FOOTER */
+// /* ========================= */
+
+// const footer = document.querySelector("footer p");
+
+// if(footer){
+
+//     footer.innerHTML =
+//     `© ${new Date().getFullYear()} Gaurav Dhak · Design. Verify. Accelerate.`;
+
+// }
+/* =======================================
+   GAURAV DHAK PORTFOLIO
+   script.js
+======================================= */
+
+/* =======================================
+   TYPING EFFECT
+======================================= */
+
 const text = [
     "RTL Design",
     "FPGA Acceleration",
@@ -45,8 +196,7 @@ const text = [
     "VLSI Engineering",
     "Digital Systems",
     "Hardware Accelerators",
-    "Verilog Development",
-    "AI on FPGA"
+    "Verilog Development"
 ];
 
 let count = 0;
@@ -54,33 +204,25 @@ let index = 0;
 let currentText = "";
 let letter = "";
 
-/* ========================= */
-/* TYPING EFFECT */
-/* ========================= */
+(function type() {
 
-(function type(){
-
-    if(count === text.length){
+    if (count === text.length) {
         count = 0;
     }
 
     currentText = text[count];
     letter = currentText.slice(0, ++index);
 
-    const typingElement = document.getElementById("typing");
+    document.getElementById("typing").textContent = letter;
 
-    if(typingElement){
-        typingElement.textContent = letter;
-    }
-
-    if(letter.length === currentText.length){
+    if (letter.length === currentText.length) {
 
         count++;
         index = 0;
 
-        setTimeout(type, 1800);
+        setTimeout(type, 1500);
 
-    }else{
+    } else {
 
         setTimeout(type, 80);
 
@@ -88,33 +230,62 @@ let letter = "";
 
 })();
 
-/* ========================= */
-/* NAVBAR ACTIVE LINK */
-/* ========================= */
+/* =======================================
+   SCROLL REVEAL ANIMATION
+======================================= */
 
-const sections = document.querySelectorAll("section[id]");
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(
+    ".section, .card, .project-card, .timeline-item, .edu-card"
+).forEach((el) => {
+
+    el.classList.add("hidden");
+    observer.observe(el);
+
+});
+
+/* =======================================
+   ACTIVE NAVIGATION LINK
+======================================= */
+
+const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
 
     let current = "";
 
-    sections.forEach(section => {
+    sections.forEach((section) => {
 
         const sectionTop = section.offsetTop - 150;
         const sectionHeight = section.clientHeight;
 
-        if(window.scrollY >= sectionTop){
+        if (scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
 
     });
 
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
 
         link.classList.remove("active");
 
-        if(link.getAttribute("href") === "#" + current){
+        if (
+            link.getAttribute("href") === "#" + current
+        ) {
             link.classList.add("active");
         }
 
@@ -122,61 +293,112 @@ window.addEventListener("scroll", () => {
 
 });
 
-/* ========================= */
-/* FADE-IN ANIMATION */
-/* ========================= */
+/* =======================================
+   NAVBAR SHADOW ON SCROLL
+======================================= */
 
-const observer = new IntersectionObserver(entries => {
+const navbar = document.querySelector(".navbar");
 
-    entries.forEach(entry => {
+window.addEventListener("scroll", () => {
 
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
+    if (window.scrollY > 50) {
+
+        navbar.style.boxShadow =
+            "0 10px 30px rgba(0,0,0,.35)";
+
+    } else {
+
+        navbar.style.boxShadow = "none";
+
+    }
+
+});
+
+/* =======================================
+   PARALLAX HERO EFFECT
+======================================= */
+
+const hero = document.querySelector(".hero");
+
+window.addEventListener("scroll", () => {
+
+    const scroll = window.pageYOffset;
+
+    if (hero) {
+
+        hero.style.backgroundPositionY =
+            scroll * 0.4 + "px";
+
+    }
+
+});
+
+/* =======================================
+   PROJECT CARD HOVER GLOW
+======================================= */
+
+const cards = document.querySelectorAll(".project-card");
+
+cards.forEach((card) => {
+
+    card.addEventListener("mousemove", (e) => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.background = `
+        radial-gradient(
+            circle at ${x}px ${y}px,
+            rgba(0,212,255,0.12),
+            #111827 40%
+        )`;
 
     });
 
-},{
-    threshold:0.15
-});
+    card.addEventListener("mouseleave", () => {
 
-document.querySelectorAll(
-    ".section, .card, .project-card, .timeline-item, .edu-card"
-).forEach(el => {
+        card.style.background = "#111827";
 
-    el.classList.add("hidden");
-    observer.observe(el);
+    });
 
 });
 
-/* ========================= */
-/* SCROLL TO TOP ON LOGO */
-/* ========================= */
+/* =======================================
+   SMOOTH SCROLL OFFSET
+======================================= */
 
-const logo = document.querySelector(".logo");
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-if(logo){
+    anchor.addEventListener("click", function (e) {
 
-    logo.addEventListener("click", () => {
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (!target) return;
+
+        e.preventDefault();
 
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
+            top: target.offsetTop - 80,
+            behavior: "smooth"
         });
 
     });
 
-}
+});
 
-/* ========================= */
-/* CURRENT YEAR FOOTER */
-/* ========================= */
+/* =======================================
+   CONSOLE MESSAGE
+======================================= */
 
-const footer = document.querySelector("footer p");
+console.log(`
+========================================
+GAURAV DHAK
+RTL • FPGA • VLSI
 
-if(footer){
-
-    footer.innerHTML =
-    `© ${new Date().getFullYear()} Gaurav Dhak · Design. Verify. Accelerate.`;
-
-}
+Design. Verify. Accelerate.
+========================================
+`);
